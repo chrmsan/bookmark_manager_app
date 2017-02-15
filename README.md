@@ -13,6 +13,6 @@ Enter rackup in your command line and go to localhost:9292 in your browser
 
 ###Keywords
 
-Ruby
-Sinatra
-TDD(RSpec)
+- Ruby
+- Sinatra
+- TDD(RSpec)
