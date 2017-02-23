@@ -1,8 +1,6 @@
 ENV["RACK_ENV"] = "test"
 
-require './lib/models/links'
-
-
+require './lib/data_mapper_setup'
 
 require File.join(File.dirname(__FILE__), '..', 'lib/my_app.rb')
 

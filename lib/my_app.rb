@@ -1,7 +1,7 @@
 ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
-require_relative 'models/links'
+require_relative 'data_mapper_setup'
 
 class MyApp < Sinatra::Base
   get '/links' do
@@ -14,7 +14,10 @@ class MyApp < Sinatra::Base
   end
 
   post '/links' do
-    Link.create(title: params[:title], url: params[:url])
+    link = Link.create(title: params[:title], url: params[:url]) #create links
+    tag = Tag.first_or_create(name: params[:tags]) #create a tag for the link
+    link.tags << tag # Add the tag to the link's DataMapper collection
+    link.save   #Saves the link
     redirect '/links'
   end
 
