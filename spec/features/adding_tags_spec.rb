@@ -10,7 +10,7 @@ feature 'Adding tags' do
 
 		click_button 'Add Link'
 		link = Link.first #it aquires the the first instance in the Link database
-		expect(link.tags.map(&:name)).to include('education')
+		expect(link.tags.map(&:name)).to include('pikachu')
 
 	end
 
