@@ -15,8 +15,9 @@ class MyApp < Sinatra::Base
 
   post '/links' do
     link = Link.create(title: params[:title], url: params[:url]) #create links
-    tag = Tag.first_or_create(name: params[:tags]) #create a tag for the link
-    link.tags << tag # Add the tag to the link's DataMapper collection
+    params[:tags].split.each do |tag| #acquires the tags params and splits each word into seperate objects
+      link.tags << Tag.first_or_create(name: tag) #the first_or_create checks if there is a similar word from before and adds it to the Tag database, and also pushes it to the links database
+    end
     link.save   #Saves the link
     redirect '/links'
   end
