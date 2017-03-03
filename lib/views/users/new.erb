@@ -3,7 +3,7 @@
 <form action="/users" method="post">
 
 	<label for="email">
-		Email: <input name="email" type="text" value='<%= @user.email %>' required>
+		Email: <input name="email" type="text" value='<%= @user.email %>' required> <%# email must be present in the form%>
 	</label>
 
 	<label for="password">
