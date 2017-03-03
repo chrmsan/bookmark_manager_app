@@ -18,4 +18,8 @@ feature "User sign up" do
 		expect { sign_up(email: nil) }.not_to change(User, :count)
 	end
 
+	scenario "I can't sign up with wrong email address" do
+		expect { sign_up(email: "john@john") }.not_to change(User, :count)
+	end
+
 end
