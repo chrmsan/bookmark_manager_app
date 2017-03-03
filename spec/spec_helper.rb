@@ -1,6 +1,7 @@
 ENV["RACK_ENV"] = "test"
 
 require './lib/data_mapper_setup'
+require './spec/web_helper'
 
 require File.join(File.dirname(__FILE__), '..', 'lib/my_app.rb')
 
