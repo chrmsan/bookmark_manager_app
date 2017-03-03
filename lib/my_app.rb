@@ -36,8 +36,15 @@ class MyApp < Sinatra::Base
   end
 
   post '/users' do
-    User.create(email: params[:email], password: params[:password])
+    user = User.create(email: params[:email], password: params[:password])
+    session[:user_id] = user.id
     redirect '/links'
+  end
+
+  helpers do
+    def current_user
+      @current_user ||= User.get(session[:user_id])
+    end
   end
 
   run! if app_file == $0
