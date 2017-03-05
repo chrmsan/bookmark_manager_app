@@ -5,6 +5,8 @@ require 'sinatra/flash'
 require_relative 'data_mapper_setup'
 
 class MyApp < Sinatra::Base
+  
+  use Rack::MethodOverride
 
   enable :sessions
   set :session_secret, 'super_secret'
@@ -65,6 +67,13 @@ class MyApp < Sinatra::Base
       erb :'sessions/new'
     end
   end
+
+  delete '/sessions' do
+    session[:user_id] = nil
+    flash.keep[:notice] = "Ciao!"
+    redirect '/links'
+  end
+
 
   helpers do
     def current_user
