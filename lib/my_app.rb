@@ -66,6 +66,9 @@ class MyApp < Sinatra::Base
     end
   end
 
+  get '/nada' do
+  end
+
   helpers do
     def current_user
       @current_user ||= User.get(session[:user_id])
