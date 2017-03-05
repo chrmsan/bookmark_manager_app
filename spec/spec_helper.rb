@@ -1,7 +1,7 @@
 ENV["RACK_ENV"] = "test"
 
 require './lib/data_mapper_setup'
-require './spec/web_helper'
+require_relative 'helpers/session'
 
 require File.join(File.dirname(__FILE__), '..', 'lib/my_app.rb')
 
@@ -39,4 +39,6 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
   
+  config.include SessionHelpers
+
 end
