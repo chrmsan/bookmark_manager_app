@@ -23,9 +23,9 @@ class MyApp < Sinatra::Base
   end
 
   post '/links' do
-    link = Link.create(title: params[:title], url: params[:url]) #create links
-    params[:tags].split.each do |tag| #acquires the tags params and splits each word into seperate objects
-      link.tags << Tag.first_or_create(name: tag) #the first_or_create checks if there is a similar word from before and adds it to the Tag database, and also pushes it to the links database
+    link = Link.create(title: params[:title], url: params[:url]) 
+    params[:tags].split.each do |tag| 
+      link.tags << Tag.first_or_create(name: tag) 
     end
     link.save   #Saves the link
     redirect '/links'
